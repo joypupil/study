@@ -1,4 +1,4 @@
-package com.joypupil.study.designpattern.factory;
+package com.joypupil.study.designpattern.factory.lazyinit;
 
 public class ConcreteProduct1 extends Product {
 

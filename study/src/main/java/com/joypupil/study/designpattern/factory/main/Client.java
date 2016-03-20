@@ -1,4 +1,4 @@
-package com.joypupil.study.designpattern.factory;
+package com.joypupil.study.designpattern.factory.main;
 
 public class Client {
 
