@@ -112,7 +112,7 @@ public class HttpClientTest {
         // 创建默认的httpClient实例.    
         CloseableHttpClient httpclient = HttpClients.createDefault();  
         // 创建httppost    
-        HttpPost httppost = new HttpPost("http://localhost:8080/api/user/login");  
+        HttpPost httppost = new HttpPost("https://api.weibo.com/oauth2/access_token");  
         // 创建参数队列    
         List<NameValuePair> formparams = new ArrayList<NameValuePair>();  
         formparams.add(new BasicNameValuePair("email", "hezikg@foxmail.com"));  

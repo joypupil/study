@@ -14,6 +14,7 @@ public class client {
 		t.toString();
 		System.out.println(t instanceof LogProxy);
 		System.out.println(t.toString());
+		System.out.println(System.currentTimeMillis());
 	}
 	
 }
