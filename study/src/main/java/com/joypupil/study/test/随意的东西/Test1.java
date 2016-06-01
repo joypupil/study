@@ -10,7 +10,6 @@ public class Test1 {
 		map.put("aaa", 10);
 		int i = map.get("aaa");
 		System.out.println(i);
-
 	}
 
 }
