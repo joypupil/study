@@ -6,14 +6,14 @@ public class Proxy implements Subject {
 	private Subject subjcet = null;
 	
 	//默认被代理者
-	public Proxy(){
-		this.subjcet = new Proxy();
-	}
+//	public Proxy(){
+//		this.subjcet = new Proxy();
+//	}
 	
 	//通过构造函数传递代理者
-	public Proxy(Object... ojbects){
-		
-	}
+//	public Proxy(Object... ojbects){
+//		
+//	}
 	
 	public Proxy(Subject _subject){
 		this.subjcet = _subject;
