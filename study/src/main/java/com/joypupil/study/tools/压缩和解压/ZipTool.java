@@ -142,19 +142,79 @@ public class ZipTool {
 				file.mkdirs();
 			}
 			
+			//TODO 使用这个可以解决中文乱码的情况
+			zfile = new ZipFile(zipFile, "GBK");
+			Enumeration<?> zList = zfile.getEntries();
+			ZipEntry ze = null;
+			byte[] buf = new byte[1024];
+			while (zList.hasMoreElements()) {
+				ze = (ZipEntry) zList.nextElement();
+				//TODO 使用这个可以解决中文乱码的情况(上下两个用一个即可)
+				String name = new String(ze.getRawName(), "GBK");
+				name = ze.getName();
+				if (ze.isDirectory()) {
+					File f = new File(zipDir + name);
+					f.mkdir();
+					continue;
+				}
+				os = new BufferedOutputStream(new FileOutputStream(getRealFileName(zipDir, name)));
+				is = new BufferedInputStream(zfile.getInputStream(ze));
+				int readLen = 0;
+				while ((readLen = is.read(buf, 0, 1024)) != -1) {
+					os.write(buf, 0, readLen);
+				}
+				IOUtil.closeQuietly(is);
+				IOUtil.closeQuietly(os);
+			}
+			zfile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			IOUtil.closeQuietly(is);
+			IOUtil.closeQuietly(os);
+			try {
+				if (null != zfile) {
+					zfile.close();
+				}
+			} catch (IOException ex) {
+				// ignore
+			}
+		}
+	}
+	
+	/**
+	 * 解压缩功能. 将zipFile文件解压到zipDir目录下.
+	 * 
+	 * @throws Exception
+	 */
+	public static void unzip(String zipDir, File zipFile) {
+		ZipFile zfile = null;
+		InputStream is = null;
+		OutputStream os = null;
+		try {
+			//自己加的，可以保证自动创建不存在的文件夹
+			File file = new File(zipDir);
+			if(!file.exists()){
+				file.mkdirs();
+			}
 			
+			
+//			zfile = new ZipFile(zipFile);
 			zfile = new ZipFile(zipFile);
 			Enumeration<?> zList = zfile.getEntries();
 			ZipEntry ze = null;
 			byte[] buf = new byte[1024];
 			while (zList.hasMoreElements()) {
 				ze = (ZipEntry) zList.nextElement();
+				//TODO 使用这个可以解决中文乱码的情况
+				String name = new String(ze.getRawName(), "GBK");
+				name = ze.getName();
 				if (ze.isDirectory()) {
-					File f = new File(zipDir + ze.getName());
+					File f = new File(zipDir + name);
 					f.mkdir();
 					continue;
 				}
-				os = new BufferedOutputStream(new FileOutputStream(getRealFileName(zipDir, ze.getName())));
+				os = new BufferedOutputStream(new FileOutputStream(getRealFileName(zipDir, name)));
 				is = new BufferedInputStream(zfile.getInputStream(ze));
 				int readLen = 0;
 				while ((readLen = is.read(buf, 0, 1024)) != -1) {
@@ -206,7 +266,7 @@ public class ZipTool {
 
 	public static void main(String[] args) throws Exception {
 		// 测试
-		ZipTool.zip("E:/mdf", "E:/mdf/22.zip");
-		ZipTool.unzip("E:/mdf", "E:/mdf/22.zip");
+//		ZipTool.zip("E:/mdf", "E:/mdf/22.zip");
+		ZipTool.unzip("D:\\需要移动的文件\\48a60cba-f901-4f01-850d-fec3a098a62e", "D:\\需要移动的文件\\48a60cba-f901-4f01-850d-fec3a098a62e.zip");
 	}
 }
