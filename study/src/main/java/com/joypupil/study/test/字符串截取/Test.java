@@ -8,7 +8,6 @@ public class Test {
 		System.out.println(str.substring(0, i));
 		System.out.println(str.substring(0, i-2));
 		System.out.println(str.substring(i-3, i-1));
-		
 	}
 
 }
