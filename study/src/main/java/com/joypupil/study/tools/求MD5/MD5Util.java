@@ -1,5 +1,7 @@
 package com.joypupil.study.tools.求MD5;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -26,7 +28,7 @@ public class MD5Util {
      * @return
 	 * @throws NoSuchAlgorithmException 
      */
-    public static String getMd5(String str) throws NoSuchAlgorithmException {
+    public static String getMD5(String str) throws NoSuchAlgorithmException {
     	MessageDigest md5 = null;
     	md5 = MessageDigest.getInstance("MD5");
         byte[] bs = md5.digest(str.getBytes());
@@ -42,7 +44,15 @@ public class MD5Util {
     }
 
     public static void main(String[] args) throws Exception{
-        System.out.println(getMd5("hello world"));
+    	System.out.println(getMD5("bimyun"));
+//    	File file = new File("F:\\迅雷下载\\jdk-7u79-windows-x64.exe");
+//    	try(InputStream in = new FileInputStream(file)){
+//    		long start = System.currentTimeMillis();
+//    		System.out.println(getMD5(in));
+//    		long end = System.currentTimeMillis();
+//    		System.out.println(end - start);
+//    	}
+       
     }
 
 }
