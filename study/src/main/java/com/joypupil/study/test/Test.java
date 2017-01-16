@@ -1,5 +1,9 @@
 package com.joypupil.study.test;
 
+import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
+
+import com.joypupil.study.tools.求MD5.MD5Util;
 
 public class Test {
 	
@@ -7,7 +11,7 @@ public class Test {
 		System.out.println("Test");
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws NoSuchAlgorithmException{
 //		String type = "aaa";
 //		type = type.toLowerCase();
 //		char[] cs=type.toCharArray();
@@ -18,7 +22,8 @@ public class Test {
 //        System.out.println(a.length());
 //        String b = "bbb";
 //        b.replaceFirst("b", "D:\\abc\\def\\");
-		System.out.println(0l == 0);
+//		System.out.println(0l == 0);
+		System.out.println(UUID.randomUUID().toString().replace("-", ""));
 	}
 
 }
