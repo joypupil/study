@@ -23,7 +23,8 @@ public class Test {
 //        String b = "bbb";
 //        b.replaceFirst("b", "D:\\abc\\def\\");
 //		System.out.println(0l == 0);
-		System.out.println(UUID.randomUUID().toString().replace("-", ""));
+//		System.out.println(UUID.randomUUID().toString().replace("-", ""));
+		System.out.println(MD5Util.getMD5("@vanke.com"));
 	}
 
 }
