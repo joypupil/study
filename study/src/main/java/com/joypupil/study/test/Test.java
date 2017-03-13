@@ -24,7 +24,10 @@ public class Test {
 //        b.replaceFirst("b", "D:\\abc\\def\\");
 //		System.out.println(0l == 0);
 //		System.out.println(UUID.randomUUID().toString().replace("-", ""));
-		System.out.println(MD5Util.getMD5("@vanke.com"));
+//		System.out.println(System.currentTimeMillis());
+//		System.out.println(MD5Util.getMD5("huayidesign.com"));
+		String[] a = new String[]{null};
+		System.out.println(a[0]);
 	}
 
 }
