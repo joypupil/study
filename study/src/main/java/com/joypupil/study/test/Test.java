@@ -1,5 +1,6 @@
 package com.joypupil.study.test;
 
+import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
@@ -24,10 +25,13 @@ public class Test {
 //        b.replaceFirst("b", "D:\\abc\\def\\");
 //		System.out.println(0l == 0);
 //		System.out.println(UUID.randomUUID().toString().replace("-", ""));
-//		System.out.println(System.currentTimeMillis());
-//		System.out.println(MD5Util.getMD5("huayidesign.com"));
-		String[] a = new String[]{null};
-		System.out.println(a[0]);
+		System.out.println(System.currentTimeMillis());
+//		System.out.println(MD5Util.getMD5("bim40.com"));
+//		String[] a = new String[]{null};
+//		System.out.println(a[0]);
+		BigDecimal b = new BigDecimal(1/3);
+		BigDecimal d = new BigDecimal(1/3);
+		System.out.println(b.subtract(d).floatValue() == 0f);
 	}
 
 }

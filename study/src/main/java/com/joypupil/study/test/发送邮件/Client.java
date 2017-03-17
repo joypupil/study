@@ -1,6 +1,9 @@
 package com.joypupil.study.test.发送邮件;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
+
+import com.joypupil.study.test.读写文件.IOUtil;
 
 public class Client {
 	
@@ -13,13 +16,16 @@ public class Client {
 		mailInfo.setUserName("q8535097@163.com");   
 		mailInfo.setPassword("zswdtx15753575");//您的邮箱密码   
 		mailInfo.setFromAddress("q8535097@163.com");   
-		mailInfo.setToAddress("hezikg@outlook.com");   
-		mailInfo.setSubject("设置邮箱标题");   
-		mailInfo.setContent("设置邮箱内容");   
+		mailInfo.setToAddress("279141894@qq.com");   
+		mailInfo.setSubject("设置邮箱标题");
+//		mailInfo.setContent("设置邮箱内容");
+		//读取文档中的类容
+		String content = IOUtil.read("C:\\Users\\hezikang\\Desktop\\邮件模板3.html");
+		mailInfo.setContent(content);
 		//这个类主要来发送邮件  
 		SimpleMailSender sms = new SimpleMailSender();  
-		sms.sendTextMail(mailInfo);//发送文体格式   
-//		sms.sendHtmlMail(mailInfo);//发送html格式  
+//		sms.sendTextMail(mailInfo);//发送文体格式   
+		sms.sendHtmlMail(mailInfo);//发送html格式  
 	}
 
 }

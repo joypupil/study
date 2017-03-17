@@ -16,7 +16,7 @@ import java.util.Locale;
 public class client {
 	
 	public static void main(String[] args){
-		String[] strs = {"张三(Z)", "李四(L)", "王五(W)","123","abc","def","2F","23F","和1","和气"};  
+		String[] strs = {"张三(Z)", "李四(L)", "王五(W)","123","abc","def","2-F","23-F","和1","和气"};  
 		// 定义一个中文排序器  
 		Comparator c = Collator.getInstance(Locale.CHINA);  
 		// 升序排序  
