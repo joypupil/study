@@ -24,14 +24,33 @@ public class Test {
 //        String b = "bbb";
 //        b.replaceFirst("b", "D:\\abc\\def\\");
 //		System.out.println(0l == 0);
-//		System.out.println(UUID.randomUUID().toString().replace("-", ""));
-		System.out.println(System.currentTimeMillis());
-//		System.out.println(MD5Util.getMD5("bim40.com"));
+		System.out.println(UUID.randomUUID().toString().replace("-", ""));
+//		System.out.println(System.currentTimeMillis());
+//		System.out.println(MD5Util.getMD5("vanke.com"));
 //		String[] a = new String[]{null};
 //		System.out.println(a[0]);
-		BigDecimal b = new BigDecimal(1/3);
-		BigDecimal d = new BigDecimal(1/3);
-		System.out.println(b.subtract(d).floatValue() == 0f);
+//		BigDecimal b = new BigDecimal(1/3);
+//		BigDecimal d = new BigDecimal(1/3);
+//		System.out.println(b.subtract(d).floatValue() == 0f);
+//		testTryCatch();
+	}
+	
+	public static void testTryCatch(){
+		try{
+			try{
+				System.err.println(1);
+			} catch(Exception e){
+				System.err.println(2);
+			} finally {
+				System.err.println(3);
+			}
+			System.err.println(4);
+		} catch(Exception e){
+			System.err.println(5);
+		} finally {
+			System.err.println(6);
+		}
+		
 	}
 
 }

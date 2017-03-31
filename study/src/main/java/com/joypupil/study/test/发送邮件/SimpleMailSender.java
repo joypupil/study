@@ -2,7 +2,11 @@ package com.joypupil.study.test.发送邮件;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;   
-import java.util.Properties;  
+import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.Address;   
 import javax.mail.BodyPart;   
 import javax.mail.Message;   
@@ -19,6 +23,17 @@ import javax.mail.internet.MimeMultipart;
 * 简单邮件（不带附件的邮件）发送器  
 */   
 public class SimpleMailSender  {   
+	
+    
+    public static BodyPart header = getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\header.png", "header");
+    public static BodyPart bimweb = getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\bimweb.png", "bimweb");
+    public static BodyPart bimabc = getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\bimabc.png", "bimabc");
+    public static BodyPart iosap = getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\iosap.png", "iosap");
+    public static BodyPart scanall = getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\scanall.png", "scanall");
+    public static BodyPart bimnet = getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\bimnet.png", "bimnet");
+    public static BodyPart logo = getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\logo.png", "logo");
+    public static BodyPart file1 = getFile("C:\\Users\\hezikang\\Desktop\\沟通宝.pdf", "bimernet.pdf");
+	
 /**  
   * 以文本格式发送邮件  
   * @param mailInfo 待发送的邮件的信息  
@@ -95,15 +110,61 @@ public class SimpleMailSender  {
       BodyPart html = new MimeBodyPart();   
       // 设置HTML内容   
       html.setContent(mailInfo.getContent(), "text/html; charset=utf-8");   
-      mainPart.addBodyPart(html);   
+      mainPart.addBodyPart(html); 
+      
+      
+//      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\header.png", "header"));
+////      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\zcgz.png", "zcgz"));
+//      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\bimweb.png", "bimweb"));
+//      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\bimabc.png", "bimabc"));
+//      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\iosap.png", "iosap"));
+//      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\scanall.png", "scanall"));
+//      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\bimnet.png", "bimnet"));
+//      mainPart.addBodyPart(getImage("C:\\Users\\hezikang\\Desktop\\assets\\assets\\logo.png", "logo"));
+//      
+//      mainPart.addBodyPart(getFile("C:\\Users\\hezikang\\Desktop\\问题报告.doc", "问题报告.doc"));
+//      
+      mainPart.addBodyPart(header);
+      mainPart.addBodyPart(bimweb);
+      mainPart.addBodyPart(bimabc);
+      mainPart.addBodyPart(iosap);
+      mainPart.addBodyPart(scanall);
+      mainPart.addBodyPart(bimnet);
+      mainPart.addBodyPart(logo);
+      mainPart.addBodyPart(file1);
+      
       // 将MiniMultipart对象设置为邮件内容   
-      mailMessage.setContent(mainPart);   
+      mailMessage.setContent(mainPart);
       // 发送邮件   
       Transport.send(mailMessage);   
       return true;   
       } catch (MessagingException ex) {   
-          ex.printStackTrace();   
-      }   
+          ex.printStackTrace();
+      }
       return false;   
     }   
+    
+    private static BodyPart getImage(String path, String cid){
+    	BodyPart imgPart = new MimeBodyPart();
+        DataSource fds = new FileDataSource(path);
+        try {
+			imgPart.setDataHandler(new DataHandler(fds));
+	        imgPart.setHeader("Content-ID", "<" + cid + ">");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+        return imgPart;
+    }
+    
+    private static BodyPart getFile(String path, String name){
+    	BodyPart imgPart = new MimeBodyPart();
+        DataSource fds = new FileDataSource(path);
+        try {
+			imgPart.setDataHandler(new DataHandler(fds));
+	        imgPart.setFileName(name);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+        return imgPart;
+    }
 }   

@@ -1,9 +1,13 @@
 package com.joypupil.study.test.发送邮件;
 
+import java.security.GeneralSecurityException;
+import java.util.List;
 /**  
 * 发送邮件需要使用的基本信息  
 */   
-import java.util.Properties;   
+import java.util.Properties;
+
+import com.sun.mail.util.MailSSLSocketFactory;   
 public class MailSenderInfo {   
     // 发送邮件的服务器的IP和端口   
     private String mailServerHost;   
@@ -21,6 +25,8 @@ public class MailSenderInfo {
     private String subject;   
     // 邮件的文本内容   
     private String content;   
+    
+    private List<String> imagePaths;
     // 邮件附件的文件名   
     private String[] attachFileNames;     
     /**  
@@ -31,9 +37,29 @@ public class MailSenderInfo {
       p.put("mail.smtp.host", this.mailServerHost);   
       p.put("mail.smtp.port", this.mailServerPort);   
       p.put("mail.smtp.auth", validate ? "true" : "false");   
+      
+      //加入下面这些属性发送的是SSL连接的邮件
+      MailSSLSocketFactory sf = null;
+		try {
+			sf =new MailSSLSocketFactory();
+		} catch (GeneralSecurityException e1) {
+		}
+		sf.setTrustAllHosts(true);
+      p.setProperty("mail.smtp.socketFactory.port", this.mailServerPort);
+      p.setProperty("mail.smtp.ssl.enable", "true");
+      p.put("mail.smtp.ssl.socketFactory", sf);
       return p;   
     }   
-    public String getMailServerHost() {   
+    
+    public List<String> getImagePaths() {
+		return imagePaths;
+	}
+
+	public void setImagePaths(List<String> imagePaths) {
+		this.imagePaths = imagePaths;
+	}
+
+	public String getMailServerHost() {   
       return mailServerHost;   
     }   
     public void setMailServerHost(String mailServerHost) {   
