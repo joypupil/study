@@ -53,7 +53,7 @@ public class SimpleMailSender  {
       // 根据session创建一个邮件消息   
       Message mailMessage = new MimeMessage(sendMailSession);   
       // 创建邮件发送者地址   
-      Address from = new InternetAddress(mailInfo.getFromAddress(), "he");   
+      Address from = new InternetAddress(mailInfo.getFromAddress(), "测试");   
       // 设置邮件消息的发送者   
       mailMessage.setFrom(from);   
       // 创建邮件的接收者地址，并设置到邮件消息中   
