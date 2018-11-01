@@ -33,15 +33,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;  
 import org.apache.http.message.BasicNameValuePair;  
 import org.apache.http.util.EntityUtils;  
-import org.junit.Test;  
+//import org.junit.Test;
   
 public class HttpClientTest {  
   
-    @Test  
-    public void jUnitTest() {  
-//        get(); 
-    	postForm();
-    }  
+//    @Test
+//    public void jUnitTest() {
+////        get();
+//    	postForm();
+//    }
   
     /** 
      * HttpClient连接SSL 
